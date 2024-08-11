@@ -1,0 +1,250 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+type DataAirTemperature {
+  quality String
+  value   Float
+}
+
+type DataAtmosphericPressureChange {
+  quantity24Hours DataAtmosphericPressureChangeQuantity24Hours
+  quantity3Hours  DataAtmosphericPressureChangeQuantity3Hours
+  tendency        DataAtmosphericPressureChangeTendency
+}
+
+type DataAtmosphericPressureChangeQuantity24Hours {
+  quality String
+  value   Float
+}
+
+type DataAtmosphericPressureChangeQuantity3Hours {
+  quality String
+  value   Float
+}
+
+type DataAtmosphericPressureChangeTendency {
+  code    String
+  quality String
+}
+
+type DataAtmosphericPressureObservation {
+  altimeterSetting DataAtmosphericPressureObservationAltimeterSetting
+  stationPressure  DataAtmosphericPressureObservationStationPressure
+}
+
+type DataAtmosphericPressureObservationAltimeterSetting {
+  quality String
+  value   Float
+}
+
+type DataAtmosphericPressureObservationStationPressure {
+  quality String
+  value   Float
+}
+
+type DataDewPoint {
+  quality String
+  value   Float
+}
+
+type DataLiquidPrecipitation {
+  condition String
+  depth     Int
+  period    Int
+  quality   String
+}
+
+type DataPastWeatherObservationManual {
+  atmosphericCondition DataPastWeatherObservationManualAtmosphericCondition
+  period               DataPastWeatherObservationManualPeriod
+}
+
+type DataPastWeatherObservationManualAtmosphericCondition {
+  quality String
+  value   String
+}
+
+type DataPastWeatherObservationManualPeriod {
+  quality String
+  value   Int
+}
+
+type DataPosition {
+  coordinates Float[]
+  type        String
+}
+
+type DataPrecipitationEstimatedObservation {
+  discrepancy         String
+  estimatedWaterDepth Int
+}
+
+type DataPresentWeatherObservationManual {
+  condition String
+  quality   String
+}
+
+type DataPressure {
+  quality String
+  value   Float
+}
+
+type DataSeaSurfaceTemperature {
+  quality String
+  value   Float
+}
+
+type DataSkyCondition {
+  cavok         String
+  ceilingHeight DataSkyConditionCeilingHeight
+}
+
+type DataSkyConditionCeilingHeight {
+  determination String
+  quality       String
+  value         Int
+}
+
+type DataSkyConditionObservation {
+  highCloudGenus        DataSkyConditionObservationHighCloudGenus
+  lowCloudGenus         DataSkyConditionObservationLowCloudGenus
+  lowestCloudBaseHeight DataSkyConditionObservationLowestCloudBaseHeight
+  lowestCloudCoverage   DataSkyConditionObservationLowestCloudCoverage
+  midCloudGenus         DataSkyConditionObservationMidCloudGenus
+  totalCoverage         DataSkyConditionObservationTotalCoverage
+}
+
+type DataSkyConditionObservationHighCloudGenus {
+  quality String
+  value   String
+}
+
+type DataSkyConditionObservationLowCloudGenus {
+  quality String
+  value   String
+}
+
+type DataSkyConditionObservationLowestCloudBaseHeight {
+  quality String
+  value   Int
+}
+
+type DataSkyConditionObservationLowestCloudCoverage {
+  quality String
+  value   String
+}
+
+type DataSkyConditionObservationMidCloudGenus {
+  quality String
+  value   String
+}
+
+type DataSkyConditionObservationTotalCoverage {
+  opaque  String
+  quality String
+  value   String
+}
+
+type DataSkyCoverLayer {
+  baseHeight DataSkyCoverLayerBaseHeight
+  cloudType  DataSkyCoverLayerCloudType
+  coverage   DataSkyCoverLayerCoverage
+}
+
+type DataSkyCoverLayerBaseHeight {
+  quality String
+  value   Int
+}
+
+type DataSkyCoverLayerCloudType {
+  quality String
+  value   String
+}
+
+type DataSkyCoverLayerCoverage {
+  quality String
+  value   String
+}
+
+type DataVisibility {
+  distance    DataVisibilityDistance
+  variability DataVisibilityVariability
+}
+
+type DataVisibilityDistance {
+  quality String
+  value   Int
+}
+
+type DataVisibilityVariability {
+  quality String
+  value   String
+}
+
+type DataWaveMeasurement {
+  method   String
+  seaState DataWaveMeasurementSeaState
+  waves    DataWaveMeasurementWaves
+}
+
+type DataWaveMeasurementSeaState {
+  code    String
+  quality String
+}
+
+type DataWaveMeasurementWaves {
+  height  Float
+  period  Int
+  quality String
+}
+
+type DataWind {
+  direction DataWindDirection
+  speed     DataWindSpeed
+  type      String
+}
+
+type DataWindDirection {
+  angle   Int
+  quality String
+}
+
+type DataWindSpeed {
+  quality String
+  rate    Float
+}
+
+model data {
+  id                                String                                @id @default(auto()) @map("_id") @db.ObjectId
+  airTemperature                    DataAirTemperature
+  atmosphericPressureChange         DataAtmosphericPressureChange?
+  atmosphericPressureObservation    DataAtmosphericPressureObservation?
+  callLetters                       String
+  dataSource                        String
+  dewPoint                          DataDewPoint
+  elevation                         Int
+  liquidPrecipitation               DataLiquidPrecipitation[]
+  pastWeatherObservationManual      DataPastWeatherObservationManual[]
+  position                          DataPosition?
+  precipitationEstimatedObservation DataPrecipitationEstimatedObservation
+  presentWeatherObservationManual   DataPresentWeatherObservationManual[]
+  pressure                          DataPressure
+  qualityControlProcess             String
+  seaSurfaceTemperature             DataSeaSurfaceTemperature?
+  sections                          String[]
+  skyCondition                      DataSkyCondition
+  skyConditionObservation           DataSkyConditionObservation?
+  skyCoverLayer                     DataSkyCoverLayer[]
+  st                                String
+  ts                                DateTime                              @db.Date
+  type                              String
+  visibility                        DataVisibility
+  waveMeasurement                   DataWaveMeasurement?
+  wind                              DataWind
+}
