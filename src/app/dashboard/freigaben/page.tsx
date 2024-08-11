@@ -1,11 +1,13 @@
+'use client'
 import React from 'react'
-import { Stack, Text, Button } from '@chakra-ui/react'
+import { Stack, Text, Button, useColorModeValue } from '@chakra-ui/react'
 import { FcLock } from 'react-icons/fc'
 
 export default function FreigabenPage() {
+    const backgroundColor = useColorModeValue('white', 'whiteAlpha.100');
     return (
         <div>
-            <Stack bg={'white'} p="4" boxShadow="lg" m="4" borderRadius="sm">
+            <Stack bg={backgroundColor} p="4" boxShadow="lg" m="4" borderRadius="sm">
                 <Stack direction="row" alignItems="center">
                     <Text fontWeight="semibold">XYC Freigabe</Text>
                     <FcLock />
@@ -27,7 +29,7 @@ export default function FreigabenPage() {
                     </Stack>
                 </Stack>
             </Stack>
-            <Stack bg={'white'} p="4" boxShadow="lg" m="4" borderRadius="sm">
+            <Stack bg={backgroundColor} p="4" boxShadow="lg" m="4" borderRadius="sm">
                 <Stack direction="row" alignItems="center">
                     <Text fontWeight="semibold">XYC Freigabe</Text>
                     <FcLock />
@@ -49,7 +51,7 @@ export default function FreigabenPage() {
                     </Stack>
                 </Stack>
             </Stack>
-            <Stack bg={'white'} p="4" boxShadow="lg" m="4" borderRadius="sm">
+            <Stack bg={backgroundColor} p="4" boxShadow="lg" m="4" borderRadius="sm">
                 <Stack direction="row" alignItems="center">
                     <Text fontWeight="semibold">XYC Freigabe</Text>
                     <FcLock />

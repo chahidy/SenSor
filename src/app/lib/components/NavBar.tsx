@@ -1,5 +1,5 @@
 'use client'
-
+import NextLink from 'next/link'
 import {
   Box,
   Flex,
@@ -75,17 +75,17 @@ export default function WithSubnavigation() {
           <Button onClick={toggleColorMode}>
             {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
           </Button>
-          <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
+          <Button as={NextLink} fontSize={'sm'} fontWeight={400} variant={'link'} href={'/auth/signin'}>
             Sign In
           </Button>
           <Button
-            as={'a'}
+            as={NextLink}
             display={{ base: 'none', md: 'inline-flex' }}
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
             bg={'blue.400'}
-            href={'#'}
+            href={'/auth/signup'}
             _hover={{
               bg: 'blue.300',
             }}>

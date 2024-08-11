@@ -23,7 +23,9 @@ import {
   MenuItem,
   MenuList,
   Grid, GridItem,
-  Link
+  Link,
+  Button,
+  useColorMode
 } from '@chakra-ui/react'
 
 import {
@@ -48,6 +50,7 @@ import {
   FiChevronDown,
 } from 'react-icons/fi'
 import { IconType } from 'react-icons'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons'
 
 interface LinkItemProps {
   name: string
@@ -145,6 +148,7 @@ const NavItem = ({ icon, url, children, ...rest }: NavItemProps) => {
 }
 
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -173,6 +177,9 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       </Text>
 
       <HStack spacing={{ base: '0', md: '6' }}>
+        <Button onClick={toggleColorMode}>
+          {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+        </Button>
         <IconButton size="lg" variant="ghost" aria-label="open menu" icon={<FiBell />} />
         <Flex alignItems={'center'}>
           <Menu>
@@ -189,6 +196,7 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
                   alignItems="flex-start"
                   spacing="1px"
                   ml="2">
+
                   <Text fontSize="sm">Chanti Königin</Text>
                   <Text fontSize="xs" color="gray.600">
                     Premium

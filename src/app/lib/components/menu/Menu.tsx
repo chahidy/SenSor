@@ -42,6 +42,7 @@ export default function Banner(props: { [x: string]: any }) {
     return (
         <Menu isOpen={isOpen1} onClose={onClose1}>
             <MenuButton
+                mt={5}
                 alignItems='center'
                 justifyContent='center'
                 bg={bgButton}
@@ -82,7 +83,7 @@ export default function Banner(props: { [x: string]: any }) {
                     <Flex align='center'>
                         <Icon as={MdOutlinePerson} h='16px' w='16px' me='8px' />
                         <Text fontSize='sm' fontWeight='400'>
-                            Panel 1
+                            PDF Export
                         </Text>
                     </Flex>
                 </MenuItem>
@@ -102,7 +103,7 @@ export default function Banner(props: { [x: string]: any }) {
                     <Flex align='center'>
                         <Icon as={MdOutlineCardTravel} h='16px' w='16px' me='8px' />
                         <Text fontSize='sm' fontWeight='400'>
-                            Panel 2
+                            Excel Export
                         </Text>
                     </Flex>
                 </MenuItem>
